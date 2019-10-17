@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add React in One Minute</title>
+  </head>
+  <body>
+
+    <h2>Add React in One Minute</h2>
+    <p>This page demonstrates using React with no build tooling.</p>
+    <p>React is loaded as a script tag.</p>
+
+    <!-- We will put our React component inside this div. -->
+    <div id="like_button_container"></div>
+    <div id="container"></div>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- <script src="js/babel.min.js" charset="utf-8"></script> -->
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
+    <script>
+      let element =React.createElement(
+          'h1',{},'Hellow da'
+        );
+
+      ReactDOM.render(element, document.getElementById('container'));
+    </script>
+    <script type="text/javascript">
+      // function time(){
+      //   let element1 = React.createElement(
+      //       'h1',{},'The time now is ', new Date().toLocaleString(),'.'
+      //     );
+      //   ReactDOM.render(element1, document.getElementById('container'));
+      // }
+
+      // setInterval(time,1000);
+    </script>
+
+    <script type="text/javascript">
+      function Cars(list){
+        return React.createElement("h2",{},"Car Brands: ",list.brand);
+      }
+
+      function Output(){
+        return React.createElement(
+          "div",{},
+          React.createElement(Cars,{brand:"Toyota"}),
+          React.createElement(Cars,{brand:"Maserati"}),
+          React.createElement(Cars,{brand:"Lamborghini"})
+          );
+      }
+
+      ReactDOM.render(React.createElement(Output,{}),document.getElementById('container'));
+    </script>
+    <script type="text/javascript">
+      function Correct(sum){
+        return React.createElement("h1",{},"it is correct");
+      }
+      function Wrong(sum){
+        return React.createElement("h1",{},"it is wrong!");
+      }
+
+      function Result(sum){
+        let add = sum.add;
+        if(add){
+          return React.createElement(Correct,{});
+        }
+        return React.createElement(Wrong,{});
+      }
+
+      ReactDOM.render(
+        React.createElement(Result,{add:false}),document.getElementById('container')
+        );
+    </script>
+    <script type="text/javascript">
+      let surat = ['A','B','C','D','E','F','G','H'];
+      let s = surat.map( surat => {
+        return React.createElement(
+          'li',{},surat
+          );
+      });
+      ReactDOM.render(
+        React.createElement('ol',{},s),document.getElementById('container')
+        );
+
+    </script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

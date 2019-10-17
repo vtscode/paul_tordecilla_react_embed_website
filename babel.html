@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add React in One Minute</title>
+  </head>
+  <body>
+
+    <div id="container"></div>
+    <!-- Load React. -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+    <script src="js/create-react-class.min.js" charset="utf-8"></script>
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello World</h1>,document.getElementById('container')
+      );
+
+    </script>
+    </script>
+    <script type="text/babel">
+      let Halo = createReactClass({
+        render : function(){
+          return (
+          <h1>Halo dunia</h1>
+
+          );
+      }
+    });
+
+    ReactDOM.render(
+      <div><Halo /><Halo /><Halo /></div>,document.getElementById('container')
+    );
+    </script>
+    <script type="text/babel">
+      let Car = createReactClass({
+        render : function(){
+          return (
+            <h1>My car brand is {this.props.brand}</h1>
+          );
+      }
+    });
+
+    ReactDOM.render(
+      <Car brand="Nissan" />,document.getElementById('container')
+    );
+    </script>
+    <script type="text/babel">
+      let Hehe = createReactClass({
+        getDefaultProps: function(){
+          return {
+            greet : 'HAHAHA'
+          }
+        },
+
+        render : function(){
+          return (<h1>{this.props.greet}</h1>);
+        }
+    });
+
+    ReactDOM.render(
+      <Hehe />,document.getElementById('container')
+    )
+
+    </script>
+
+    <script type="text/babel">
+      let IniState = createReactClass({
+          getInitialState: function(){
+            return {
+              greetings : 'askdmkasmd'
+            }
+          },render : function(){
+            return (<h1>{this.state.greetings}</h1>);
+          }
+      });
+      ReactDOM.render(
+        <IniState />,document.getElementById('container')
+      );
+    </script>
+    <script type="text/babel">
+      let IniState1 = createReactClass({
+          greetings: function(){
+            alert(this.props.details);
+          },
+          render : function(){
+            return (<a href="#" onClick={this.greetings}>Click me!</a>);
+          }
+      });
+      ReactDOM.render(
+        <IniState1 details="HEHEHEHE" />,document.getElementById('container')
+      );
+    </script>
+
+    <script type="text/babel">
+      let Plus = createReactClass({
+          getInitialState: function(){
+           return {total:0};
+          },
+
+          Plus_one : function(){
+            this.setState({
+              total: this.state.total +1
+            });
+          },
+
+          render : function(){
+            return (<div><button type="button" onClick={this.Plus_one}>+1</button><h2>Total : {this.state.total}</h2></div>);
+          }
+      });
+      ReactDOM.render(
+        <Plus />,document.getElementById('container')
+      );
+    </script>
+
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

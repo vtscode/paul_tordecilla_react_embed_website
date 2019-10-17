@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add React in One Minute</title>
+  </head>
+  <body>
+
+    <div id="container"></div>
+    <!-- Load React. -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="js/babel.min.js" charset="utf-8"></script>
+    <script src="js/create-react-class.min.js" charset="utf-8"></script>
+
+    <!-- Event onlcik handling statement -->
+    <script type="text/babel">
+      let Plus = createReactClass({
+          getInitialState: function(){
+           return {total:0};
+          },
+
+          Plus_one : function(){
+            this.setState({
+              total: this.state.total +1
+            });
+          },
+
+          render : function(){
+            return (<div><button type="button" onClick={this.Plus_one}>+1</button><h2>Total : {this.state.total}</h2></div>);
+          }
+      });
+      ReactDOM.render(
+        <Plus />,document.getElementById('container')
+      );
+    </script>
+
+    <!-- Conditional Statement -->
+    <script type="text/babel">
+      function System(os){
+        const _os = os._os;
+        if(_os){
+          return(<h1>You choose windows</h1>);
+        }else{
+          return(<h1>You choose Linux</h1>);
+        }
+      }
+      ReactDOM.render(
+        <System _os={true} />,document.getElementById('container')
+      );
+    </script>
+
+    <!-- Basic list component -->
+    <script type="text/babel">
+      function CarList(list){
+        const cars = list.cars;
+        const listCars = cars.map(brand => <li>{brand}</li>);
+
+        return (<ul>{listCars}</ul>);
+      }
+
+      const cars = ['Bugatti','Viper','Mustang','Ford'];
+
+      ReactDOM.render(
+        <CarList cars={cars} />,document.getElementById('container')
+      );
+    </script>
+
+    <!-- Parent Component -->
+    <script type="text/babel">
+      let Name = createReactClass({
+        render:function(){
+          return <div>{this.props.fullName}</div>;
+        }
+      });
+      let Great = createReactClass({
+        getInitialState:function(){
+          return {
+            yourname : "Riventus"
+          };
+        },
+
+        render : function(){
+          return <div><h1>{this.props.output}</h1><Name fullName={this.state.yourname}></Name></div>;
+        }
+
+      });
+
+      ReactDOM.render(
+        <Great output={'Hai!'}/>,document.getElementById('container')
+      );
+
+    </script>
+
+    <!-- Ref Attribut -->
+    <script type="text/babel">
+      let Ref_A = createReactClass({
+        Click : function(){
+                const result = this.refs.cars.value;
+                alert(result);
+              },
+
+        render:function(){
+          return (<div>
+              <h4>What car brand do you want?</h4>
+              <input type="text" ref="cars" />
+              <input type="button" value="Submit" onClick={this.Click} />
+          </div>);
+        }
+      });
+
+       ReactDOM.render(
+        <Ref_A />,document.getElementById('container')
+      );
+    </script>
+    <!-- Inline Style -->
+    <script type="text/babel">
+      let Style = createReactClass({
+
+        render:function(){
+          let bgcolor = {backgroundColor:"green"};
+          let fcolor = {color:"white"};
+          return (
+            <div style={bgcolor}>
+                <h4 style={fcolor}>Ini warna mantap</h4>
+            </div>
+          );
+        }
+      });
+
+       ReactDOM.render(
+        <Style />,document.getElementById('container')
+      );
+    </script>
+
+    <!-- Onchange Text Form App -->
+     <script type="text/babel">
+      let Change = createReactClass({
+        getInitialState:function(){
+          return {
+            want : ""
+          };
+        },
+        textChange: function(result){
+          this.setState({want: result.target.value});
+        },
+
+        render : function(){
+          return (
+          <div>
+            <p>What do u like?</p>
+            <input type="text" onChange={this.textChange.bind(this)} />
+            <h3>
+              <p>{this.state.want}</p>
+            </h3>
+          </div>);
+        }
+
+      });
+
+      ReactDOM.render(
+        <Change />,document.getElementById('container')
+      );
+
+    </script>
+
+    <!-- Disable Button when empty Application -->
+    <script type="text/babel">
+      let Disabled = createReactClass({
+        getInitialState:function(){
+          return {fullname:''}
+        },
+        changes(e){
+          this.setState({fullname: e.target.value});
+        },
+
+        render : function(){
+          return (
+          <div>
+            <p>What is ur name?</p>
+            <input name="fullname" onChange={this.changes} value={this.state.fullname} />
+            <input type="button" disabled={this.state.fullname ===''} value="Submit" />
+          </div>);
+        }
+
+      });
+
+      ReactDOM.render(
+        <Disabled />,document.getElementById('container')
+      );
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
